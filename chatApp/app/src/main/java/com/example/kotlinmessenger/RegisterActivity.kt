@@ -81,11 +81,7 @@ class RegisterActivity : AppCompatActivity() {
         if(selectedPhotoUri == null) return
 
         val fileName = UUID.randomUUID().toString()
-<<<<<<< HEAD
         val ref = FirebaseStorage.getInstance().getReference("/images/$fileName")
-=======
-        val ref = FirebaseStorage.getInstance().getReference("/iamges/$fileName")
->>>>>>> main
 
         ref.putFile(selectedPhotoUri!!)
             .addOnSuccessListener {
@@ -104,16 +100,12 @@ class RegisterActivity : AppCompatActivity() {
 
         ref.setValue(user)
             .addOnSuccessListener {
-<<<<<<< HEAD
                 val intent = Intent(this, LatestMessagesActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
                 startActivity(intent)
             }
             .addOnFailureListener {
                 Log.d("MainActivity", "Faild to set value to database : ${it.message}")
-=======
-
->>>>>>> main
             }
     }
 }
