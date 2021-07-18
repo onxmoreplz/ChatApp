@@ -1,6 +1,5 @@
-package com.example.kotlinmessenger.dto
+package com.example.kotlinmessenger.models
 
-import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlinmessenger.R
 import com.squareup.picasso.Picasso
 import com.xwray.groupie.Item

@@ -1,4 +1,4 @@
-package com.example.kotlinmessenger.dto
+package com.example.kotlinmessenger.models
 
 class User(
     val uid: String,
