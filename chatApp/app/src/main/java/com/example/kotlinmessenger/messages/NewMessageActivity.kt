@@ -1,15 +1,16 @@
-package com.example.kotlinmessenger
+package com.example.kotlinmessenger.messages
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import com.example.kotlinmessenger.dto.User
-import com.example.kotlinmessenger.dto.UserItem
+import com.example.kotlinmessenger.R
+import com.example.kotlinmessenger.models.User
+import com.example.kotlinmessenger.models.UserItem
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.google.firebase.ktx.Firebase
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.activity_new_message.*
@@ -31,6 +32,9 @@ class NewMessageActivity : AppCompatActivity() {
 
         fetchUsers()
     }
+    companion object {
+        val USER_KEY = "USER_KEY"
+    }
 
     private fun fetchUsers() {
         val ref = FirebaseDatabase.getInstance().getReference("/users")
@@ -45,6 +49,17 @@ class NewMessageActivity : AppCompatActivity() {
                         adapter.add(UserItem(user))
                     }
                 }
+
+                adapter.setOnItemClickListener { item, view ->
+                    val userItem = item as UserItem
+
+                    val intent = Intent(view.context, ChatLogActivity::class.java)
+                    intent.putExtra(USER_KEY, userItem.user)
+                    startActivity(intent)
+
+                    finish()
+                }
+
 
                 recyclerview_newmessage.adapter = adapter
             }
