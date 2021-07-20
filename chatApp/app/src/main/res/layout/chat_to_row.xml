@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="@+id/imageView" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imageview_chat_to_row"
         android:layout_width="50dp"
         android:layout_height="50dp"
         app:layout_constraintEnd_toEndOf="parent"
